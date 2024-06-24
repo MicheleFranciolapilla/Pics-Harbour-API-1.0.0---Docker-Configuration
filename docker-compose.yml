@@ -1,0 +1,146 @@
+# Definition of services, networks, and volumes used by the application
+
+services:
+
+  # Application Service
+  # ***********************************************
+  app:
+
+    # Build the image using the Dockerfile in the current directory
+    build: .  
+
+    # Assign a name and a tag to the built Docker image.
+    image: michelefranciolapilla76/pics_harbour_api:1.0.0 
+
+    # Set the container name.
+    container_name: pics_harbour_api_container  
+
+    # Set the container's file system to read-only (excluding volumes)
+    read_only: true
+
+    # Use tmpfs to write temporary files in the /tmp directory.
+    tmpfs:
+      - /tmp  
+
+    # Volume for API data persistence.
+    volumes:
+      # Mount the volume for the public folder.
+      - public-data:/usr/src/app/public  
+
+    # Port mapping (host:container)
+    ports:
+      # Map port 1976 on the host to port 1976 on the container.
+      - "1976:1976" 
+      
+    # Define the environment variables needed for the container.
+    environment:  
+      - HOST=http://localhost
+      - PORT=1976
+      - DATABASE_URL=mysql://root:root@db:3306/PicsHarbour-Docker
+      - BCRYPT_SALT_ROUNDS=10
+      - JWT_SECRET=PicsHarbourAPI1-0-0
+      - SEED_DB=${SEED_DB:-true}
+
+    # Service dependencies
+    depends_on:
+      # Ensure the 'db' service is started before the 'app' service
+      db:
+        # Check the health status of the 'db' service before starting 'app'.
+        condition: service_healthy
+
+    # Connect the service to the 'pics_harbour_network'.
+    networks:
+      - pics_harbour_network
+  # ***********************************************
+
+  # Database Service
+  # ***********************************************
+  db:
+
+    # Use the MySQL 8.0 image.
+    image: mysql:8.0  
+
+    # Set the container name for the database.
+    container_name: pics_harbour_database
+
+    # Command to set the default authentication plugin.
+    command: --default-authentication-plugin=caching_sha2_password
+
+    # Database health check.
+    healthcheck:
+      # Command to check the health status of the database.
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      # Interval between health checks.
+      interval: 10s
+      # Health check timeout.
+      timeout: 20s
+      # Number of health check attempts before considering the service unhealthy.
+      retries: 10
+
+    # Environment variables for the database
+    environment:  
+      # Set the root user's password.
+      MYSQL_ROOT_PASSWORD: root
+      # Specify the name of the database to create.
+      MYSQL_DATABASE: PicsHarbour-Docker
+
+    # Volume for database data persistence
+    volumes:
+      # Mount the volume for database data.
+      - db-data:/var/lib/mysql  
+      # Mount the MySQL configuration file.
+      - ./mysqlDocker/config/mysqlConfig.cnf:/etc/mysql/my.cnf
+      # Mount the directory for initialization scripts.
+      - ./mysqlDocker/initialize:/docker-entrypoint-initdb.d
+
+    # Port mapping for the database (host:container)
+    ports:
+      # Map port 3306 on the host to port 3306 on the container.
+      - "3306:3306"
+
+    # Connect the service to the 'pics_harbour_network'.  
+    networks:
+      - pics_harbour_network
+  # ***********************************************
+
+  # phpMyAdmin Service
+  # ***********************************************
+  phpmyadmin:
+
+    # Use the phpMyAdmin image.
+    image: phpmyadmin/phpmyadmin
+
+    # Set the container name for phpMyAdmin.
+    container_name: phpmyadmin_container
+
+    # Environment variables for phpMyAdmin
+    environment:
+      # Specify the database service as the host for phpMyAdmin.
+      PMA_HOST: db
+      # Set the root user's password for access to phpMyAdmin.
+      MYSQL_ROOT_PASSWORD: root
+
+    # Port mapping for phpMyAdmin (host:container)
+    ports:
+      # Map port 8080 on the host to port 80 on the phpMyAdmin container.
+      - "8080:80"
+    
+    # Service dependencies
+    depends_on:
+      # Ensure the 'db' service is started before 'phpMyAdmin'.
+      - db
+
+    # Connect the service to the 'pics_harbour_network'.
+    networks:
+      - pics_harbour_network
+  # ***********************************************
+
+# Use the 'bridge' driver to create a bridge network.
+networks:
+  pics_harbour_network:
+    driver: bridge
+
+# Definition of volumes used in services
+volumes:
+  db-data:  # Volume for database data
+  public-data:  # Volume for public application data
