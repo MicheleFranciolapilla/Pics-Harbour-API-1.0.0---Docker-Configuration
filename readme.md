@@ -22,6 +22,8 @@ This repository contains the essential files needed to build and run the Docker 
    ```git clone https://github.com/MicheleFranciolapilla/Pics-Harbour-API-1.0.0---Docker-Configuration.git```
 
 3. **Navigate into the repository directory and execute the appropriate command to run the API:**
+    -   ***Best practice to run containers:***
+        For the correct procedures to start the containers, please refer to the ***Running the API*** section of the image overview, available at this [link](https://hub.docker.com/repository/docker/michelefranciolapilla76/pics_harbour_api/general).
     -   ***Using Docker Compose:***
         Set the optional SEED_DB environment variable to control database seeding before running the command:
         -   If you want to seed the database with Admin users:
