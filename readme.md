@@ -47,10 +47,10 @@ This repository contains the essential files needed to build and run the Docker 
     In all cases, the optional parameter `-d` can be used to run the containers in detached mode.
 
 ## Additional Information
-**DockerHub:** For a detailed overview of the API features, user roles, and data management specifics, visit the [Docker repository](https://hub.docker.com/r/michelefranciolapilla76/pics_harbour_api/).
-**Static API Documentation:** The static Swagger-OpenAPI page is available at [Static API documentation](https://michelefranciolapilla.github.io/Pics-Harbour-API-1.0.0---Static-Documentation/).
-**Dynamic API Documentation and testing:** While running the containers, the Swagger-based documentation can be accessed at `/api-docs` endpoint for interactive testing and detailed route information.
-**API Detailed Information endpoints:** Information on API usage and configurations is available through the following endpoints (while containers are running):
+- **DockerHub:** For a detailed overview of the API features, user roles, and data management specifics, visit the [Docker repository](https://hub.docker.com/r/michelefranciolapilla76/pics_harbour_api/).
+- **Static API Documentation:** The static Swagger-OpenAPI page is available at [Static API documentation](https://michelefranciolapilla.github.io/Pics-Harbour-API-1.0.0---Static-Documentation/).
+- **Dynamic API Documentation and testing:** While running the containers, the Swagger-based documentation can be accessed at `/api-docs` endpoint for interactive testing and detailed route information.
+- **API Detailed Information endpoints:** Information on API usage and configurations is available through the following endpoints (while containers are running):
     - `/info` - general information.
     - `/info/apiroutes?route[family]=all` - detailed information about all the API routes.
     *(Note: There are more keys and values for the query string than the ones used here)*
