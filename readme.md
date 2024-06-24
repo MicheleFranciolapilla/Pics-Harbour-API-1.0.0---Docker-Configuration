@@ -29,8 +29,7 @@ This repository contains the essential files needed to build and run the Docker 
         -   If you want to seed the database with Admin users:
             - ```SEED_DB=true docker-compose up``` (in Unix-based systems)
             - ```$env:SEED_DB=true docker-compose up``` (in Windows PowerShell)
-            or 
-            ```docker-compose up```
+            - ```docker-compose up``` (for all systems)
         - If you don't want to seed the database with Admin users:
             - ```SEED_DB=false docker-compose up``` (in Unix-based systems)
             - ```$env:SEED_DB=false docker-compose up``` (in Windows PowerShell)
