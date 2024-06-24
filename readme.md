@@ -27,11 +27,13 @@ This repository contains the essential files needed to build and run the Docker 
     -   ***Using Docker Compose:***
         Set the optional SEED_DB environment variable to control database seeding before running the command:
         -   If you want to seed the database with Admin users:
-            ```SEED_DB=true docker-compose up```
+            - ```SEED_DB=true docker-compose up``` (in Unix-based systems)
+            - ```$env:SEED_DB=true docker-compose up``` (in Windows PowerShell)
             or 
             ```docker-compose up```
         - If you don't want to seed the database with Admin users:
-            ```SEED_DB=false docker-compose up```
+            - ```SEED_DB=false docker-compose up``` (in Unix-based systems)
+            - ```$env:SEED_DB=false docker-compose up``` (in Windows PowerShell)
     -   ***Using scripts:***
         -   To start the API using Node.js:
             -   If you want to seed the database with Admin users:
