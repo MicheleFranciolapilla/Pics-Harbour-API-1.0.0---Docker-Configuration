@@ -45,6 +45,7 @@ This repository contains the essential files needed to build and run the Docker 
                 ```./runApi.sh noseed```
 
     In all cases, the optional parameter `-d` can be used to run the containers in detached mode.
+    All users (Admin) loaded into the database by the seeder have the same password: **Dogs&0Bugs**
 
 ## Additional Information
 - **DockerHub:** For a detailed overview of the API features, user roles, and data management specifics, visit the [Docker repository](https://hub.docker.com/r/michelefranciolapilla76/pics_harbour_api/).
