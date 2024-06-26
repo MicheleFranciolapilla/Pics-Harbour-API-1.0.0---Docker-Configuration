@@ -22,9 +22,9 @@ This repository contains the essential files needed to build and run the Docker 
    ```docker pull michelefranciolapilla76/pics_harbour_api```<br>
    Pulling the image directly is not mandatory as the command `docker-compose up` and start scripts are configured to automatically pull the latest image if it's not already present on your machine.
 2. **Clone this repository:**
-    - To clone the repository and automatically create a directory with the same name as the repository:
+    - To clone the repository and automatically create a directory with the same name as the repository:<br>
     ```git clone https://github.com/MicheleFranciolapilla/Pics-Harbour-API-1.0.0---Docker-Configuration.git```
-    - If you wish to clone the repository in the current directory without creating a new folder:
+    - If you wish to clone the repository in the current directory without creating a new folder:<br>
     ```git clone https://github.com/MicheleFranciolapilla/Pics-Harbour-API-1.0.0---Docker-Configuration.git .``` 
 3. **Navigate into the repository directory and execute the appropriate command to run the API:**
     -   ***Best practice to run containers:***
