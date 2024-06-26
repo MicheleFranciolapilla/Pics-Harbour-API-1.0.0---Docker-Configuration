@@ -1,7 +1,7 @@
 # Pics Harbour API Docker Image
 
 ## Overview
-This repository contains the essential files needed to build and run the Docker containers for the **Pics Harbour API**. This robust platform empowers users to publish and manage images with associated metadata, using MySQL and phpMyAdmin for data persistence.
+This repository contains the essential files needed to build and run the Docker containers for the **Pics Harbour API**.<br>This robust platform empowers users to publish and manage images with associated metadata, using MySQL and phpMyAdmin for data persistence.
 
 ### Repository Contents
 - `runApi.js`: Node.js script for starting the API.
@@ -11,15 +11,15 @@ This repository contains the essential files needed to build and run the Docker 
 ## Getting Started
 
 ### Prerequisites
-- **Docker**: Ensure Docker is installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
-- **Git**: Needed to clone and manage the repository. [Install Git](https://git-scm.com/downloads)
+- **Docker**:<br>Ensure Docker is installed on your machine. [Install Docker](https://docs.docker.com/get-docker/)
+- **Git**:<br>Needed to clone and manage the repository. [Install Git](https://git-scm.com/downloads)
 - **Node.js (optional)**: 
   - Required to run containers by executing `node runApi.js`. [Install Node.js](https://nodejs.org/en/download/)
   - Not necessary if running containers directly with `docker-compose up`
 
 ### Docker Image Pull, Setup & Configuration
 1. **Pull the API Docker image (optional):**
-   ```docker pull michelefranciolapilla76/pics_harbour_api```
+   ```docker pull michelefranciolapilla76/pics_harbour_api```<br>
    Pulling the image directly is not mandatory as the command `docker-compose up` and start scripts are configured to automatically pull the latest image if it's not already present on your machine.
 2. **Clone this repository:**
     - To clone the repository and automatically create a directory with the same name as the repository:
@@ -52,11 +52,9 @@ This repository contains the essential files needed to build and run the Docker 
             -   If you **don't** want to seed the database with Admin users:
                 ```./runApi.sh noseed```
 
-    In all cases, the optional parameter `-d` can be used to run the containers in detached mode.
-    
-    All users (Admin) loaded into the database by the seeder have the same password: **Dogs&0Bugs**
+    In all cases, the optional parameter `-d` can be used to run the containers in detached mode.<br>All users (Admin) loaded into the database by the seeder have the same password: **Dogs&0Bugs**
 4. **Setup and execution details:**
-   The execution of docker-compose up or the start scripts will automatically create a directory named mysqlDocker in the host folder. This directory contains configuration and initialization scripts for MySQL. You may delete this directory and its contents if it's no longer required after setup.
+   The execution of `docker-compose up` or the start scripts will automatically create a directory named *mysqlDocker* in the host folder. This directory contains configuration and initialization scripts for MySQL. You may delete this directory and its contents if it's no longer required after setup.
 
 
 ## Additional Information
