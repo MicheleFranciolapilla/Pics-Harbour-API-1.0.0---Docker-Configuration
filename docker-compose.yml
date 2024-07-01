@@ -10,7 +10,7 @@ services:
     build: .  
 
     # Assign a name and a tag to the built Docker image.
-    image: michelefranciolapilla76/pics_harbour_api:1.0.0 
+    image: michelefranciolapilla76/pics_harbour_api:latest
 
     # Set the container name.
     container_name: pics_harbour_api_container  
